@@ -10,5 +10,10 @@ module.exports = {
         return res.view( 'admin/login', {
             title: '登录后台'
         });
+    },
+    index: function (req, res) {
+        return res.view( 'admin/index', {
+            title: '后台首页'
+        });
     }
 };
