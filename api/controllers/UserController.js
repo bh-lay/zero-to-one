@@ -13,8 +13,18 @@ module.exports = {
       });
     });
   },
-  add: function (req, res) {
+  login: function (req, res) {
     req.session.isAdmin = true;
-    return res.view('500');
+    return res.json({
+      code: 200,
+      msg: "login success"
+    });
+  },
+  logout: function (req, res) {
+    req.session.isAdmin = false;
+    return res.json({
+      code: 200,
+      msg: "logout success"
+    });
   }
 };
