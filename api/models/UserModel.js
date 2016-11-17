@@ -11,14 +11,23 @@ module.exports = {
   tableName: 'user',
   globalId: 'UserModel',
   attributes: {
-    firstName: {
+    username: {
       type: 'string'
     },
-    lastName: {
+    password: {
+      type: 'string'
+    },
+    role: {
       type: 'string'
     },
     gender: {
-      type: 'number'
+      type: 'string'
+    },
+    //响应数据时，删除密码字段
+    toJSON: function(){
+      var obj = this.toObject();
+      delete obj.password;
+      return obj;
     }
   }
 };
