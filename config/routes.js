@@ -55,6 +55,6 @@ module.exports.routes = {
     'get /admin/index': 'AdminController.index',
 
     // 后台相关
-    'post /api/user/login': 'UserController.login',
-    'post /api/user/logout': 'UserController.logout',
+    'post /api/user/login': 'api/UserController.login',
+    'post /api/user/logout': 'api/UserController.logout',
 };
