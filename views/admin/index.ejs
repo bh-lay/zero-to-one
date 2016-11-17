@@ -124,7 +124,7 @@
 <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script>
 $('.nav-logout').on('click',function(){
-  $.get('/user/logout',function(){
+  $.post('/api/user/logout',function(){
     location.href = "/admin/login";
   });
 });

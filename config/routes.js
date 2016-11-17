@@ -32,9 +32,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  }
+    '/': {
+      view: 'homepage'
+    },
 
   /***************************************************************************
   *                                                                          *
@@ -46,4 +46,15 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+    // 前台页面
+    'get /try/:opusid': 'OpusController.detail',
+    // 'get /try/:userid': 'XxxController.detail',
+
+    // 后台相关
+    'get /admin/login': 'AdminController.login',
+    'get /admin/index': 'AdminController.index',
+
+    // 后台相关
+    'post /api/user/login': 'UserController.login',
+    'post /api/user/logout': 'UserController.logout',
 };

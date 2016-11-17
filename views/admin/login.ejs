@@ -111,7 +111,8 @@
       return;
     }
     $.ajax({
-      url: '/user/login',
+      url: '/api/user/login',
+      type: 'POST',
       data: {
         username: username,
         password: password
