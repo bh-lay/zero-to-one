@@ -44,7 +44,7 @@
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li class="divider"></li>
-            <li><a href="/user/logout">登出</a></li>
+            <li><a href="/user/logout" class="nav-logout">登出</a></li>
           </ul>
         </li>
       </ul>
@@ -122,3 +122,10 @@
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script>
+$('.nav-logout').on('click',function(){
+  $.get('/user/logout',function(){
+    location.href = "/admin/login";
+  });
+});
+</script>
