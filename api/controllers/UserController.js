@@ -20,8 +20,8 @@ module.exports = {
     });
   },
   login: function (req, res) {
-    var username = req.query.username,
-        password = req.query.password;
+    var username = req.body.username,
+        password = req.body.password;
 
     if( !username || !password ){
       return res.json({
