@@ -1,102 +1,129 @@
-  <style>
-    html,body{
-      text-align:left;
-      font-size:1em;
-      background: #f4f4f4;
-      font-family:"Open Sans","Myriad Pro",Arial,sans-serif;
-    }
-    html,body,img,form,textarea,input,fieldset,div,p,div,ul,li,ol,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,code{
-      margin:0;
-      padding:0
-    }
-    ul,li{
-      list-style:none
-    }
-    img{
-      display:block
-    }
-    a img{
-      border:0
-    }
-    a{
-      text-decoration:none;
-      font-weight:normal;
-      font-family:inherit
-    }
-    *:active,
-    *:focus{
-      outline:0;
-      -moz-outline-style:none
-    }
-    h1,h2,h3,h4,h5,h6,h7{
-      font-weight:normal;
-      font-size:1em
-    }
-    .clearfix:after{
-      clear:both;
-      content:".";
-      display:block;
-      font-size:0;
-      height:0;
-      line-height:0;
-      visibility:hidden
-    }
-    .page .ocean{
-      background:url('http://sailsjs.com/images/waves.png') #0c8da0 no-repeat center 270px;
-      height:180px;
-      padding-top: 120px;
-    }
-    .page .ocean img{
-      margin-right:auto;
-      margin-left:auto
-    }
-    .login-panel{
-      width: 340px;
-      height:360px;
-      margin: auto;
-      background: #fff;
-    }
-    .login-panel h1{
-      padding: 40px 0 30px;
-      font-weight:bold;
-      font-size:1.7em;
-      color:#001c20;
-      text-align:center
-    }
-    .login-panel input{
-      display: block;
-      width: 250px;
-      height: 40px;
-      margin: 0 auto 30px;
-      padding: 10px 20px;
-      border: 1px solid #ccc;
-      line-height: 40px;
-      color: #001c20;
-      background: #fff;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      -ms-box-sizing: border-box;
-      box-sizing: border-box;
-    }
-    .login-panel a{
-      display: block;
-      width: 250px;
-      height:40px;
-      margin: auto;
-      line-height: 40px;
-      color:#fff;
-      text-align:center;
-      background: #0c8da0;
-    }
-  </style>
-
-  <div class="page">
-    <div class="ocean">
-      <div class="login-panel">
-        <h1>登录</h1>
-        <input type="text" placeholder="请输入用户名">
-        <input type="password" placeholder="请输入密码">
-        <a target="_blank" href="/user/login">登录</a>
-      </div>
+<style>
+  html,body{
+    text-align:left;
+    font-size:1em;
+    background: #f4f4f4;
+    font-family:"Open Sans","Myriad Pro",Arial,sans-serif;
+  }
+  html,body,img,form,textarea,input,fieldset,div,p,div,ul,li,ol,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,code{
+    margin:0;
+    padding:0
+  }
+  ul,li{
+    list-style:none
+  }
+  img{
+    display:block
+  }
+  a img{
+    border:0
+  }
+  a{
+    text-decoration:none;
+    font-weight:normal;
+    font-family:inherit
+  }
+  *:active,
+  *:focus{
+    outline:0;
+    -moz-outline-style:none
+  }
+  h1,h2,h3,h4,h5,h6,h7{
+    font-weight:normal;
+    font-size:1em
+  }
+  .clearfix:after{
+    clear:both;
+    content:".";
+    display:block;
+    font-size:0;
+    height:0;
+    line-height:0;
+    visibility:hidden
+  }
+  .page .ocean{
+    background:url('http://sailsjs.com/images/waves.png') #0c8da0 no-repeat center 270px;
+    height:180px;
+    padding-top: 120px;
+  }
+  .page .ocean img{
+    margin-right:auto;
+    margin-left:auto
+  }
+  .login-panel{
+    width: 340px;
+    height:360px;
+    margin: auto;
+    background: #fff;
+  }
+  .login-panel h1{
+    padding: 40px 0 30px;
+    font-weight:bold;
+    font-size:1.7em;
+    color:#001c20;
+    text-align:center
+  }
+  .login-panel input{
+    display: block;
+    width: 250px;
+    height: 40px;
+    margin: 0 auto 30px;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    line-height: 40px;
+    color: #001c20;
+    background: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .login-panel a{
+    display: block;
+    width: 250px;
+    height:40px;
+    margin: auto;
+    line-height: 40px;
+    color:#fff;
+    text-align:center;
+    background: #0c8da0;
+  }
+</style>
+<div class="page">
+  <div class="ocean">
+    <div class="login-panel">
+      <h1>登录</h1>
+      <input type="text" class="username" placeholder="请输入用户名">
+      <input type="password" class="password" placeholder="请输入密码">
+      <a target="_blank" href="javascript:void(0)">登录</a>
     </div>
   </div>
+</div>
+<script src="/lib/jquery.js"></script>
+<script>
+  var $username = $('.username'),
+      $password = $('.password');
+  $('.login-panel a').on('click', function(){
+    var username = $username.val(),
+        password = $password.val();
+    if( !username.length || !password.length ){
+      alert('二逼走点心行不，快把账号名密码输全！');
+      return;
+    }
+    $.ajax({
+      url: '/user/login',
+      data: {
+        username: username,
+        password: password
+      },
+      success: function( data ){
+        data = data || {};
+        if( data.code == 200 ){
+          window.location.href = "/admin/index";
+        }else{
+          alert('登录失败，哪写错了？');
+        }
+      }
+    })
+  });
+</script>
