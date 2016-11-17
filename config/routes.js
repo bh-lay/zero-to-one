@@ -48,7 +48,7 @@ module.exports.routes = {
 
     // 前台页面
     'get /try/:opusid': 'OpusController.detail',
-    // 'get /try/:userid': 'XxxController.detail',
+    'get /catch/:userid': 'userController.detail',
 
     // 后台相关
     'get /admin/login': 'AdminController.login',
