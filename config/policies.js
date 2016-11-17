@@ -49,6 +49,10 @@ module.exports.policies = {
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
   UserController: {
-    "list" : 'isAdmin'
+    "list": "isAdmin"
+  },
+  AdminController: {
+    "*" : "isAdmin",
+    "login" : true
   }
 };

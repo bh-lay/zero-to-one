@@ -1,47 +1,124 @@
-  <style>
-    html,body{
-      text-align:left;
-      font-size:1em;
-      background: #f4f4f4;
-      font-family:"Open Sans","Myriad Pro",Arial,sans-serif;
-    }
-    html,body,img,form,textarea,input,fieldset,div,p,div,ul,li,ol,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,code{
-      margin:0;
-      padding:0
-    }
-    ul,li{
-      list-style:none
-    }
-    img{
-      display:block
-    }
-    a img{
-      border:0
-    }
-    a{
-      text-decoration:none;
-      font-weight:normal;
-      font-family:inherit
-    }
-    *:active,
-    *:focus{
-      outline:0;
-      -moz-outline-style:none
-    }
-    h1,h2,h3,h4,h5,h6,h7{
-      font-weight:normal;
-      font-size:1em
-    }
-    .clearfix:after{
-      clear:both;
-      content:".";
-      display:block;
-      font-size:0;
-      height:0;
-      line-height:0;
-      visibility:hidden
-    }
-  </style>
 
-  <div>导航</div>
-  <h1>后台管理界面</h1>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+
+
+<nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">021</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">剧中人 <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="/user/logout">登出</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<h1>后台管理界面</h1>
+
+<div class="default-page">
+  <div class="header">
+    <h1 id="main-title" class="container"><%= __('A brand new app.') %></h1>
+    <h3 class="container">You're looking at: <code><%= view.pathFromApp + '.' +view.ext %></code></h3>
+  </div>
+  <div class="main container clearfix">
+    <!-- <h1>Getting started</h1>
+    <p>Don't worry, we've got your back.</p> -->
+    <ul class="getting-started">
+      <li class="clearfix">
+        <div class="step">
+          <div class="sprite one"></div>
+          <h3>Generate a REST API.</h3>
+          <p>
+            Run <code>sails generate api user</code>.  This will create two files: a <a href="http://sailsjs.org/#!/documentation/concepts/ORM/Models.html">model</a> <code class="pocket">api/models/User.js</code> and a <a href="http://sailsjs.org/#!/documentation/concepts/Controllers">controller</a><code class="pocket">api/controllers/UserController.js</code>.
+          </p>
+        </div>
+      </li>
+      <li class="clearfix">
+        <div class="step">
+          <div class="sprite two"></div>
+          <h3>
+            Lift your app.
+          </h3>
+          <p>
+            Run <code>sails lift</code> to start up your app server.  If you visit <a target="_blank" href="http://localhost:<%= sails.config.port || 1337%>/user"><code>http://localhost:<%= sails.config.port || 1337%>/user</code></a> in your browser, you'll see a <a href="http://sailsjs.org/#!/documentation/reference/blueprint-api">WebSocket-compatible</a> user API.
+          </p>
+        </div>
+      </li>
+      <li class="clearfix">
+        <div class="step">
+          <div class="sprite three"></div>
+          <h3>
+            Dive in.
+          </h3>
+          <p>Blueprints are just the beginning.  You'll probably also want to learn how to customize your app's <a href="http://sailsjs.org/#!/documentation/concepts/Routes">routes</a>, set up <a href="http://sailsjs.org/#!/documentation/concepts/Policies">security policies</a>, configure your <a href="http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.connections.html">data sources</a>, and build custom <a target="_blank" href="http://sailsjs.org/#!/documentation/concepts/Controllers?q=actions">controller actions</a>. For more help getting started, check out the links on this page.</p>
+
+        </div>
+      </li>
+    </ul>
+    <div class="links">
+      <!-- <h3>Links</h3> -->
+      <ul class="link-list">
+
+        <h4>Docs</h4>
+        <a target="_blank" href="http://sailsjs.org/#!/documentation/anatomy/myApp"><li>App Structure</li></a>
+        <a target="_blank" href="http://sailsjs.org/#!/documentation/reference"><li>Reference</li></a>
+        <a target="_blank" href="http://sailsjs.org/#!/documentation/concepts/extending-sails/Adapters/adapterList.html"><li>Supported Databases</li></a>
+
+        <h4>Tutorials</h4>
+        <a target="_blank" href="https://github.com/sails101"><li>Sails 101</li></a>
+
+        <h4>Community</h4>
+        <a target="_blank" href="http://stackoverflow.com/search?q=sails.js"><li>StackOverFlow</li></a>
+        <a target="_blank" href="https://github.com/balderdashy/sails"><li>GitHub</li></a>
+        <a target="_blank" href="https://groups.google.com/forum/#!forum/sailsjs"><li>Google Group</li></a>
+        <a target="_blank" href="http://webchat.freenode.net/"><li>IRC (#sailsjs on freenode)</li></a>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
