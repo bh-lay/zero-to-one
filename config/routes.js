@@ -48,13 +48,13 @@ module.exports.routes = {
 
     // 前台页面
     'get /try/:opusid': 'OpusController.detail',
-    'get /catch/:userid': 'userController.detail',
+    'get /catch/:username': 'userController.detail',
 
     // 后台相关
     'get /admin/login': 'AdminController.login',
     'get /admin/index': 'AdminController.index',
 
-    // 后台相关
+    // 异步数据
     'post /api/user/login': 'api/UserController.login',
     'post /api/user/logout': 'api/UserController.logout',
 };

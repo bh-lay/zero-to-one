@@ -23,6 +23,9 @@ module.exports = {
     gender: {
       type: 'string'
     },
+    githubAccount: {
+      type: 'string'
+    },
     //响应数据时，删除密码字段
     toJSON: function(){
       var obj = this.toObject();
