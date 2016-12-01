@@ -1,0 +1,56 @@
+@import "_core.less";
+
+/**
+ * 导航
+ */
+@nav_height: 60px;
+navigation.nav{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: @nav_height;
+	line-height: @nav_height;
+	z-index: 1000;
+	.nav-list {
+		float: left;
+		li {
+			float: left;
+			a {
+				display: block;
+				height: @nav_height;
+				padding: 0 2em;
+				outline: none;
+				overflow: hidden;
+				line-height: @nav_height;
+				color: #fff;
+				text-align: center;
+				font-size: 16px;
+				.transition(.2s);
+				&:hover {
+					color: #f70
+				}
+			}
+			&.active{
+				a {
+					color: #f70
+				}
+			}
+		}
+	}
+	.nav-side {
+		float: right;
+		height: @nav_height;
+		font-size: 0;
+		li {
+			display: inline-block;
+			height: @nav_height;
+			line-height: @nav_height;
+			padding:0 10px;
+			a {
+				font-size: 12px
+			}
+
+		}
+	}
+}
