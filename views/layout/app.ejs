@@ -28,9 +28,29 @@
     <%- body %>
 
 
-
-<!--SCRIPTS-->
-<script src="/js/dependencies/sails.io.js"></script>
-<!--SCRIPTS END-->
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/lib/jquery.js"></script>
+    <script>
+        (function(){
+            var distance = 100,
+                // 是否已经置灰
+                isDarkened = false,
+                darkenClassName = "darken",
+                $nav = $("navigation.nav"),
+                $win = $(window),
+                useMethod;
+            function fixClass(){
+                var isNeedDarken = $win.scrollTop() > distance,
+                    isNeedChange = isNeedDarken !== isDarkened;
+                if (isNeedChange) {
+                    isDarkened = isNeedDarken;
+                    useMethod = (isNeedDarken ? 'add' : 'remove') + 'Class';
+                    $nav[useMethod](darkenClassName);
+                }
+            }
+            $(window).on("scroll", fixClass);
+            fixClass();
+        })();
+    </script>
 </body>
 </html>
