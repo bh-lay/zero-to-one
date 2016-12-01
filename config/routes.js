@@ -21,9 +21,8 @@
  */
 
 module.exports.routes = {
-	'/': {
-		view: 'homepage'
-	},
+
+	'get /': 'HomeController.detail',
 
 	// 前台页面
 	'get /try/:opusid': 'OpusController.detail',
