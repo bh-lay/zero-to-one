@@ -44,6 +44,8 @@ module.exports = {
       if( user.role === "admin" ){
         req.session.isAdmin = true;
       }
+      // 将用户信息存储至session
+      req.session.loginUser = user;
       return res.jsonp({
         code: 200,
         msg: "login succes",
