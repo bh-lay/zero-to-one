@@ -21,40 +21,19 @@
  */
 
 module.exports.routes = {
+	'/': {
+		view: 'homepage'
+	},
 
-  /***************************************************************************
-  *                                                                          *
-  * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
-  * etc. depending on your default view engine) your home page.              *
-  *                                                                          *
-  * (Alternatively, remove this and add an `index.html` file in your         *
-  * `assets` directory)                                                      *
-  *                                                                          *
-  ***************************************************************************/
+	// 前台页面
+	'get /try/:opusid': 'OpusController.detail',
+	'get /catch/:username': 'userController.detail',
 
-    '/': {
-      view: 'homepage'
-    },
+	// 后台相关
+	'get /admin/login': 'AdminController.login',
+	'get /admin/index': 'AdminController.index',
 
-  /***************************************************************************
-  *                                                                          *
-  * Custom routes here...                                                    *
-  *                                                                          *
-  * If a request to a URL doesn't match any of the custom routes above, it   *
-  * is matched against Sails route blueprints. See `config/blueprints.js`    *
-  * for configuration options and examples.                                  *
-  *                                                                          *
-  ***************************************************************************/
-
-    // 前台页面
-    'get /try/:opusid': 'OpusController.detail',
-    'get /catch/:username': 'userController.detail',
-
-    // 后台相关
-    'get /admin/login': 'AdminController.login',
-    'get /admin/index': 'AdminController.index',
-
-    // 异步数据
-    'post /api/user/login': 'api/UserController.login',
-    'post /api/user/logout': 'api/UserController.logout',
+	// 异步数据
+	'post /api/user/login': 'api/UserController.login',
+	'post /api/user/logout': 'api/UserController.logout',
 };
