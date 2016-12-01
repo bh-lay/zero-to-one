@@ -10,14 +10,14 @@
         <div class="container">
             <div class="nav-list">
                 <ul>
-                    <li><a href="#">首页</a></li>
+                    <li><a href="/">首页</a></li>
                     <li><a href="#">发现</a></li>
                     <li><a href="#">APP</a></li>
                 </ul>
             </div>
             <div class="nav-side">
-                <% if( user ) { %>
-                <p><%=user.username%></p>
+                <% if( loginUser ) { %>
+                <a href="/catch/<%=loginUser.username%>"><%=loginUser.username%></a>
                 <% } %>
             </div>
         </div>

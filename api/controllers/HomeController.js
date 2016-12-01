@@ -9,7 +9,7 @@ module.exports = {
     detail: function (req, res) {
         return res.view( 'page/home.ejs', {
             title: '用户主页',
-            user: [],
+            loginUser: null,
             layout: 'layout/app.ejs'
         });
     }

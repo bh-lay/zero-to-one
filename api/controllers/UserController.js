@@ -24,7 +24,7 @@ module.exports = {
             }
             return res.view( 'user-profile', {
                 title: '用户主页',
-                user: userInfo,
+                loginUser: userInfo,
                 layout: 'layout/app.ejs'
             });
         });
