@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%=typeof title == 'undefined' ? 'New Sails App' : title%></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/styles/app.css">
+</head>
+<body>
+    <navigation class="nav">
+        <div class="container">
+            <div class="nav-list">
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">发现</a></li>
+                    <li><a href="#">APP</a></li>
+                </ul>
+            </div>
+            <div class="nav-side">
+                <% if( user ) { %>
+                <p><%=user.username%></p>
+                <% } %>
+            </div>
+        </div>
+    </navigation>
+    <%- body %>
+
+
+
+<!--SCRIPTS-->
+<script src="/js/dependencies/sails.io.js"></script>
+<!--SCRIPTS END-->
+</body>
+</html>
