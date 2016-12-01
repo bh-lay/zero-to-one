@@ -10,8 +10,23 @@ navigation.nav{
 	left: 0;
 	width: 100%;
 	height: @nav_height;
-	line-height: @nav_height;
+	background: -webkit-linear-gradient(top,rgba(0,0,0,.4),transparent);
+	background: -moz-linear-gradient(top,rgba(0,0,0,.4),transparent);
+	background: linear-gradient(top,rgba(0,0,0,.4),transparent);
+	.transition(.8s,ease,background-color);
 	z-index: 1000;
+	.logo{
+		float: left;
+		width: @nav_height;
+		height:@nav_height;
+		line-height: @nav_height;
+		font-size: 26px;
+		font-weight: bold;
+		color: #fff;
+		span{
+			opacity: .4;
+		}
+	}
 	.nav-list {
 		float: left;
 		li {
@@ -51,5 +66,8 @@ navigation.nav{
 			font-size: 14px;
 			color: #fff;
 		}
+	}
+	&.fixed-top{
+		background-color: #333;
 	}
 }

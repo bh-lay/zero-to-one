@@ -8,6 +8,7 @@
 <body>
     <navigation class="nav">
         <div class="container">
+            <a href="/" class="logo">i<span>-</span>fe</a>
             <div class="nav-list">
                 <ul>
                     <li><a href="/">首页</a></li>
@@ -18,7 +19,9 @@
             <div class="nav-side">
                 <% if( loginUser ) { %>
                 <a href="/catch/<%=loginUser.username%>"><%=loginUser.username%></a>
-                <% } %>
+                <% } else { %>
+                <a href="#" class="btn">login</a>
+                <% }  %>
             </div>
         </div>
     </navigation>
