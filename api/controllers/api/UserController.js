@@ -55,6 +55,7 @@ module.exports = {
   },
   logout: function (req, res) {
     req.session.isAdmin = false;
+    req.session.loginUser = null;
     return res.json({
       code: 200,
       msg: "logout success"
