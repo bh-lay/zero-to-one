@@ -20,3 +20,13 @@ a:hover {
 	width: 1000px;
 	margin: auto;
 }
+.clearfix{
+	*zoom: 1;
+	&:after{
+		display: block;
+		content: "";
+		clear:both;
+		height: 0;
+		overflow: hidden;
+	}
+}

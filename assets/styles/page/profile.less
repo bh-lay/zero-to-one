@@ -34,7 +34,7 @@
 		background: #fff;
 		border: 8px solid #fff;
 		border-radius: 8px;
-		box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+		box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
 		img{
 			display: block;
 			width: 100%;
@@ -63,10 +63,20 @@
 	padding: 20px 20px 0 200px;
 }
 .opus-list{
-	height:700px;
+	margin: 0 -20px 20px 0;
 	padding: 20px 0;
+
 	.opus-item{
-		width: 300px;
+		float: left;
+		width: 235px;
+		margin-right: 20px;
 		border: 1px solid #333;
+		.borderbox();
+		.cover{
+			img{
+				display: block;
+				width: 100%;
+			}
+		}
 	}
 }
