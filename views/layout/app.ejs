@@ -20,7 +20,8 @@
                 <% if( loginUser ) { %>
                 <a href="/catch/<%=loginUser.username%>"><%=loginUser.username%></a>
                 <% } else { %>
-                <a href="#" class="btn">login</a>
+                <a href="javascript:void(0)" class="login-btn">登录</a>
+                <a href="javascript:void(0)" class="register-btn">注册</a>
                 <% }  %>
             </div>
         </div>
@@ -30,6 +31,7 @@
 
     <script src="/js/dependencies/sails.io.js"></script>
     <script src="/lib/jquery.js"></script>
+    <script src="/lib/dialog.js"></script>
     <script>
         (function(){
             var distance = 100,
@@ -50,6 +52,12 @@
             }
             $(window).on("scroll", fixClass);
             fixClass();
+            $('.login-btn').on('click', function () {
+                UI.prompt('暂不开放登录！');
+            });
+            $('.register-btn').on('click', function () {
+                UI.prompt('暂不开放注册！');
+            });
         })();
     </script>
 </body>
