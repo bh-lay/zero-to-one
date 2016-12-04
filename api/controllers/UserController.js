@@ -10,15 +10,23 @@ function getUserInfo(username, callback) {
     }).exec(function(err, user) {
         if(err || !user) {
             callback && callback(err || !user);
-        } else {
-            callback && callback(null, user);
+            return;
         }
+        OpusModel.find({
+
+        }).exec(function(err, opusList) {
+            if(err || !user) {
+                callback && callback(err || !opusList);
+                return;
+            }
+            callback && callback(null, user, opusList);
+        });
     });
 }
 module.exports = {
     detail: function (req, res) {
         var username = req.params.username;
-        getUserInfo(username, function(err, userInfo) {
+        getUserInfo(username, function(err, userInfo, opusList) {
             if(err){
                 return res.notFound('用户不存在!');
             }
@@ -26,7 +34,8 @@ module.exports = {
                 title: '用户主页',
                 loginUser: req.session.loginUser,
                 layout: 'layout/app.ejs',
-                userInfo: userInfo
+                userInfo: userInfo,
+                opusList: opusList
             });
         });
     }

@@ -23,8 +23,18 @@
             </div>
         </div>
     </div>
+    <div>
+        <p>loginUser: <%=JSON.stringify(loginUser)%></p>
+        <p>userInfo: <%=JSON.stringify(userInfo)%></p>
+        <p>opusList: <%=JSON.stringify(opusList)%></p>
+    </div>
     <div class="opus-list">
-        <p>loginUser:<%=JSON.stringify(loginUser)%></p>
-        <p>userInfo:<%=JSON.stringify(userInfo)%></p>
+        <% opusList.forEach(function( item, index ){ %>
+            <div class="opus-item">
+                <p><%= item.title %></p>
+                <p><%= item.intro %></p>
+                <img src="<%= item.cover %>" alt="">
+            </div>
+        <% })%>
     </div>
 </div>
