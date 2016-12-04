@@ -4,22 +4,40 @@
 }
 .user-profile{
 	position: relative;
-	min-height: 150px;
+	min-height: 140px;
 	margin-bottom: 20px;
 	border-bottom: 1px solid #eee;
 	.avatar{
 		position: absolute;
-		top: -50px;
+		top: -60px;
 		left: 0;
 		width: 160px;
 		height: 160px;
 		background: #fff;
 		border: 8px solid #fff;
 		border-radius: 8px;
+		box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
 		img{
 			display: block;
 			width: 100%;
 			border-radius: 4px;
+		}
+	}
+	.username{
+		height: 30px;
+		margin-bottom: 10px;
+		line-height: 30px;
+		font-size: 28px;
+	}
+	.gender{
+		svg,
+		span{
+			display: inline-block;
+			vertical-align: middle;
+		}
+		span{
+			line-height: 24px;
+			font-size: 16px;
 		}
 	}
 }
