@@ -17,13 +17,14 @@ navigation.nav{
 	z-index: 1000;
 	.logo{
 		float: left;
-		width: @nav_height;
+		width: @nav_height + 30;
 		height:@nav_height;
 		line-height: @nav_height;
 		font-size: 26px;
-		font-weight: bold;
+		font-weight: bolder;
 		color: #fff;
 		span{
+			font-weight: normal;
 			opacity: .4;
 		}
 	}
@@ -58,15 +59,17 @@ navigation.nav{
 		height: @nav_height;
 		font-size: 0;
 		a {
-
 			display: inline-block;
 			height: @nav_height;
 			line-height: @nav_height;
 			padding: 0 10px;
 			font-size: 14px;
 			color: #fff;
-			&:hover {
-				color: #f70
+			svg,
+			span{
+				display: inline-block;
+				vertical-align: middle;
+				margin-left: 5px;
 			}
 		}
 	}
