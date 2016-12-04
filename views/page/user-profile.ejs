@@ -1,9 +1,16 @@
 <link rel="stylesheet" href="/styles/page/profile.css">
-<div class="user-header">
+<div class="user-cover">
 </div>
-<div style="height: 800px;">
-    <div class="container">
-        <h1>user profile</h1>
+<div class="container">
+    <div class="user-profile">
+        <div class="avatar">
+            <img src="https://s1.tuchong.com/sites/165/1658480/logo_large.jpg?1">
+        </div>
+        <div class="user-profile-body">
+            <h1><%=userInfo.username%></h1>
+        </div>
+    </div>
+    <div class="opus-list">
         <p>loginUser:<%=JSON.stringify(loginUser)%></p>
         <p>userInfo:<%=JSON.stringify(userInfo)%></p>
     </div>
