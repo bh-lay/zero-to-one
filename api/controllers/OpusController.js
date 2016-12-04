@@ -7,7 +7,7 @@
 
 module.exports = {
     detail: function (req, res) {
-        return res.view( 'opus-detail', {
+        return res.view( 'page/opus-detail', {
             title: '作品页面'
         });
     }
