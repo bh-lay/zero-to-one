@@ -7,7 +7,10 @@
             <img src="https://s1.tuchong.com/sites/165/1658480/logo_large.jpg?1">
         </div>
         <div class="user-profile-body">
-            <h1 class="username"><%=userInfo.username%></h1>
+            <h1 class="username">
+                <%=userInfo.nickName%>
+                <small><%=userInfo.username%></small>
+            </h1>
             <div class="gender">
                 <% if(loginUser.gender == 'male'){ %>
                 <svg class="icon" width="24" height="24" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">

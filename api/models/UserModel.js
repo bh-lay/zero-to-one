@@ -14,6 +14,9 @@ module.exports = {
     username: {
       type: 'string'
     },
+    nickName: {
+      type: 'string'
+    },
     password: {
       type: 'string'
     },
