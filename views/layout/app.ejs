@@ -18,7 +18,7 @@
             </div>
             <div class="nav-side">
                 <% if( loginUser ) { %>
-                <a href="/catch/<%=loginUser.username%>"><%=loginUser.username%></a>
+                <div class="username"><a href="/catch/<%=loginUser.username%>"><%=loginUser.username%></a></div>
                 <% } else { %>
                 <a href="javascript:void(0)" class="login-btn">登录</a>
                 <a href="javascript:void(0)" class="register-btn">注册</a>
@@ -34,7 +34,7 @@
     <script src="/lib/dialog.js"></script>
     <script>
         (function(){
-            var distance = 100,
+            var distance = 70,
                 // 是否已经置灰
                 isDarkened = false,
                 darkenClassName = "darken",
