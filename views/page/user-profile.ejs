@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="/styles/page/profile.css">
+
+<div class="user-page">
 <div class="user-cover">
     <div class="author-location">
         <a href="http://bh-lay.com" target="_blank">东平森林公园 By:@剧中人</a>
@@ -32,12 +34,15 @@
     <div class="opus-list clearfix">
         <% opusList.forEach(function( item, index ){ %>
             <div class="opus-item">
-                <div class="cover">
-                    <img src="<%= item.cover %>" alt="">
+                <div class="cover" style="background-image: url(<%= item.cover %>)"></div>
+                <div class="intro">
+                    <div class="title"><%= item.title %></div>
+                    <div class="desc"><%= item.intro %></div>
                 </div>
-                <p><%= item.title %></p>
-                <p><%= item.intro %></p>
+                <div class="data">
+                </div>
             </div>
         <% })%>
     </div>
+</div>
 </div>
