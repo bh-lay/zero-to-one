@@ -10,7 +10,5 @@ module.exports = function(req, res, next) {
     return next();
   }
 
-  return res.forbidden({
-    msg: 'you need login first !'
-  });
+  return res.forbidden('请先登录！');
 };

@@ -23,12 +23,19 @@
 module.exports.routes = {
 
 	'get /': 'HomeController.detail',
-
-	// 前台页面
-	'get /try/:opusid': 'OpusController.detail',
+	/**
+	 * 前台页面
+	 */
+	// 发布作品
+	'get /publish': 'OpusController.add',
+	// 用户首页
 	'get /catch/:username': 'userController.detail',
+	// 作品页面
+	'get /try/:opusid': 'OpusController.detail',
 
-	// 后台相关
+	/**
+	 * 后台页面
+	 */
 	'get /admin/login': 'AdminController.login',
 	'get /admin/index': 'AdminController.index',
 
