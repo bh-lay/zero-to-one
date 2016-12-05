@@ -54,5 +54,8 @@ module.exports.policies = {
   AdminController: {
     "*" : "isAdmin",
     "login" : true
+  },
+  "api/OpusController": {
+    "add": "isLogin"
   }
 };

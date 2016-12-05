@@ -13,23 +13,28 @@ module.exports = {
   attributes: {
     // 标题
     title: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
     // 创建者 _id
     createBy: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
     // 简介
     intro: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
     // 缩略图
     cover: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
     // 地址
     url: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
     // github地址 如 bh-lay/blog
     githubFullName: {

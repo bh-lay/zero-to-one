@@ -32,7 +32,13 @@ module.exports.routes = {
 	'get /admin/login': 'AdminController.login',
 	'get /admin/index': 'AdminController.index',
 
-	// 异步数据
+	/**
+	 * 	异步数据
+	 */
+	// 登录登出
 	'post /api/user/login': 'api/UserController.login',
 	'post /api/user/logout': 'api/UserController.logout',
+
+	// 作品
+	'post /api/opus/add': 'api/OpusController.add'
 };
