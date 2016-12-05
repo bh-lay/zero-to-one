@@ -13,7 +13,7 @@ function getUserInfo(username, callback) {
             return;
         }
         OpusModel.find({
-
+            createBy: user.id
         }).exec(function(err, opusList) {
             if(err || !user) {
                 callback && callback(err || !opusList);

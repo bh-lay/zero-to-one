@@ -15,7 +15,7 @@ module.exports = {
       intro: params.intro,
       title: params.title,
       cover: params.cover,
-      createBy: 'ObjectId("' + req.session.loginUser.id + '")',
+      createBy: req.session.loginUser.id,
       url: params.url,
       githubFullName: params.githubFullName
     }).exec(function (err, finn){

@@ -16,7 +16,7 @@ module.exports = {
       type: 'string',
       required: true
     },
-    // 创建者 _id
+    // 创建者 id
     createBy: {
       type: 'string',
       required: true
