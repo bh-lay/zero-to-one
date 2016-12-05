@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/styles/app.css">
 </head>
 <body>
-    <nav class="navigation">
+    <nav class="navigation<%= navigationClass ? (' '+navigationClass) : '' %>">
         <div class="container">
             <a href="/" class="logo">i<span>-</span>fe</a>
             <div class="nav-list">
@@ -64,8 +64,10 @@
                     $nav[useMethod](darkenClassName);
                 }
             }
-            $(window).on("scroll", fixClass);
-            fixClass();
+            if( !$nav.hasClass(darkenClassName) ){
+                $(window).on("scroll", fixClass);
+                fixClass();
+            }
             $('.login-btn').on('click', function () {
                 UI.prompt('暂不开放登录！');
             });

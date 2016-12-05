@@ -14,6 +14,7 @@ module.exports = {
     add: function (req, res) {
         return res.view( 'page/publish', {
             title: '发布作品',
+            navigationClass: 'darken',
             loginUser: req.session.loginUser,
             layout: 'layout/app.ejs'
         });

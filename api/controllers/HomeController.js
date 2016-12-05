@@ -9,6 +9,7 @@ module.exports = {
     detail: function (req, res) {
         return res.view( 'page/home.ejs', {
             title: 'i-fe',
+            navigationClass: '',
             loginUser: req.session.loginUser,
             layout: 'layout/app.ejs'
         });

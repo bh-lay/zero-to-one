@@ -32,6 +32,7 @@ module.exports = {
             }
             return res.view( 'page/user-profile', {
                 title: '用户主页',
+                navigationClass: '',
                 loginUser: req.session.loginUser,
                 layout: 'layout/app.ejs',
                 userInfo: userInfo,
