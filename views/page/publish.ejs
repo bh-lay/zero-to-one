@@ -1,1 +1,70 @@
-<h1>发布作品</h1>
+<link rel="stylesheet" href="/styles/page/publish.css">
+<script src="/lib/vue.js"></script>
+<div class="publish-page" >
+    <div class="container">
+        <div class="publish-opus">
+            <h1>发布作品</h1>
+            <div class="input-list">
+                <div class="input-item clearfix">
+                    <label>标题</label>
+                    <input type="text" v-model="title" maxlength="30">
+                </div>
+                <div class="input-item clearfix">
+                    <label>介绍</label>
+                    <textarea v-model="intro" maxlength="300"></textarea>
+                </div>
+                <div class="input-item clearfix">
+                    <label>封面图</label>
+                    <input type="text" v-model="cover">
+                </div>
+                <div class="input-item clearfix">
+                    <label>在线地址</label>
+                    <input type="text" v-model="url">
+                </div>
+                <div class="input-item clearfix">
+                    <label>github地址</label>
+                    <input type="text" v-model="githubFullName">
+                </div>
+            </div>
+            <footer>
+                <a href="javascript:void(0)" @click="submit" class="submit-btn">发布</a>
+            </footer>
+        </div>
+    </div>
+</div>
+<script>
+//    /api/opus/add
+    var vm = new Vue({
+        el: '.publish-opus',
+        data: {
+            title: '',
+            intro: '',
+            cover: '',
+            url: '',
+            githubFullName: '',
+            errList: {}
+        },
+        methods: {
+            validator: function(){
+                this.errList = {};
+                if( this.title.length === 0 || this.title.length > 30 ) {
+                    this.errList.title = true;
+                } else if ( this.intro.length === 0 || this.intro.length > 300 ) {
+                    this.errList.intro = true;
+                } else if ( this.cover.length === 0 ){
+                    this.errList.cover = true;
+                } else if ( this.url.length === 0 || this.url.length > 300 ) {
+                    this.errList.url = true;
+                } else {
+                    return true;
+                }
+                return false;
+            },
+            submit: function () {
+                if(  this.validator() ){
+                    alert('可以提交')
+                }
+            }
+        }
+    })
+</script>

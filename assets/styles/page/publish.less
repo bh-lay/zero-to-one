@@ -1,0 +1,73 @@
+@import "../less/_core.less";
+
+.publish-page{
+	padding: 90px 0 40px;
+	background: #eee;
+}
+.publish-opus{
+	border: 1px solid #ddd;
+	background: #fff;
+	h1{
+		margin-bottom: 20px;
+		padding: 10px 20px;
+		line-height: 20px;
+		font-size: 18px;
+		border-bottom: 1px solid #ccc;
+	}
+	.input-list{
+		padding-left: 20px;
+	}
+	.input-item{
+		margin-bottom: 20px;
+		label{
+			display: block;
+			float: left;
+			width: 80px;
+			font-size: 12px;
+		}
+		input,
+		textarea{
+			display: block;
+			float: left;
+			width: 400px;
+			padding: 10px 15px;
+			font-size: 14px;
+			border: 1px solid #ccc;
+			.borderbox();
+			&:focus{
+				outline: none;
+				border-color: #555;
+			}
+		}
+		input{
+			height: 36px;
+			line-height: 16px;
+		}
+		textarea{
+			height: 100px;
+			line-height: 18px;
+			resize: vertical;
+		}
+	}
+	footer{
+		padding: 0 0 20px 100px;
+	}
+	.submit-btn{
+		display: inline-block;
+		vertical-align: middle;
+		width: 80px;
+		height: 40px;
+		line-height: 40px;
+		background: #fa0;
+		font-size: 14px;
+		text-align: center;
+		color: #fff;
+		.transition(.2s);
+		&:hover{
+			background: #f80;
+		}
+		&:active{
+			background: #f60;
+		}
+	}
+}
