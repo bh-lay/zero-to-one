@@ -17,10 +17,13 @@
                         <textarea v-model="intro" maxlength="300"></textarea>
                     </div>
                 </div>
-                <div class="input-item clearfix" v-bind:class="{inputError: this.errList.cover}">
+                <div class="input-item clearfix item-cover" v-bind:class="{inputError: this.errList.cover}">
                     <label>封面图</label>
                     <div class="input-body">
-                        <input type="text" v-model="cover">
+                        <div v-if="!cover.length">
+                            <input type="file" @change="uploadFile">
+                        </div>
+                        <div v-if="cover.length">显示图片</div>
                     </div>
                 </div>
                 <div class="input-item clearfix" v-bind:class="{inputError: this.errList.url}">
@@ -46,7 +49,17 @@
     function isUrl( input ){
         return !!( input || '').match(/^http(s|):\/\/[^\.]+\.[^\.]+/);
     }
-
+    function uploadFile(fileInput){
+        $.ajax({
+            url: '后台接受图片地址',
+            type: 'POST',
+            cache: false,
+            data: new FormData(fileInput),
+            processData: false,  // 关键点
+            contentType: false  // 关键点
+        }).done(function(res) {
+        }).fail(function(res) {});
+    }
     var vm = new Vue({
         el: '.publish-opus',
         data: {
@@ -77,6 +90,19 @@
                     me.errList = {};
                 }, 2000);
                 return false;
+            },
+            uploadFile: function (e) {
+                var file = e.target.files[0],
+                    supportedTypes = ['image/jpg', 'image/jpeg', 'image/png'];
+                if( !file ){
+                    return;
+                }
+                if (supportedTypes.indexOf(file.type) >= 0) {
+//                    this.file = file;
+                    uploadFile(e.target);
+                } else {
+                    UI.prompt('只能上传图片呦！');
+                }
             },
             submit: function () {
                 if( !this.validator() ){
