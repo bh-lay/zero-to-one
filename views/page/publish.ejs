@@ -5,25 +5,35 @@
         <div class="publish-opus">
             <h1>发布作品</h1>
             <div class="input-list">
-                <div class="input-item clearfix">
+                <div class="input-item clearfix" v-bind:class="{inputError: this.errList.title}">
                     <label>标题</label>
-                    <input type="text" v-model="title" maxlength="30">
+                    <div class="input-body">
+                        <input type="text" v-model="title" maxlength="30">
+                    </div>
                 </div>
-                <div class="input-item clearfix">
+                <div class="input-item clearfix" v-bind:class="{inputError: this.errList.intro}">
                     <label>介绍</label>
-                    <textarea v-model="intro" maxlength="300"></textarea>
+                    <div class="input-body">
+                        <textarea v-model="intro" maxlength="300"></textarea>
+                    </div>
                 </div>
-                <div class="input-item clearfix">
+                <div class="input-item clearfix" v-bind:class="{inputError: this.errList.cover}">
                     <label>封面图</label>
-                    <input type="text" v-model="cover">
+                    <div class="input-body">
+                        <input type="text" v-model="cover">
+                    </div>
                 </div>
-                <div class="input-item clearfix">
+                <div class="input-item clearfix" v-bind:class="{inputError: this.errList.url}">
                     <label>在线地址</label>
-                    <input type="text" v-model="url">
+                    <div class="input-body">
+                        <input type="text" v-model="url">
+                    </div>
                 </div>
-                <div class="input-item clearfix">
+                <div class="input-item clearfix" v-bind:class="{inputError: this.errList.githubFullName}">
                     <label>github地址</label>
-                    <input type="text" v-model="githubFullName">
+                    <div class="input-body">
+                        <input type="text" v-model="githubFullName">
+                    </div>
                 </div>
             </div>
             <footer>
@@ -33,7 +43,10 @@
     </div>
 </div>
 <script>
-//    /api/opus/add
+    function isUrl( input ){
+        return !!( input || '').match(/^http(s|):\/\/[^\.]+\.[^\.]+/);
+    }
+
     var vm = new Vue({
         el: '.publish-opus',
         data: {
@@ -46,24 +59,53 @@
         },
         methods: {
             validator: function(){
+                var me = this;
                 this.errList = {};
-                if( this.title.length === 0 || this.title.length > 30 ) {
+                return true;
+                if(this.title.length === 0 || this.title.length > 30) {
                     this.errList.title = true;
-                } else if ( this.intro.length === 0 || this.intro.length > 300 ) {
+                } else if (this.intro.length === 0 || this.intro.length > 300) {
                     this.errList.intro = true;
-                } else if ( this.cover.length === 0 ){
+                } else if (this.cover.length === 0 ){
                     this.errList.cover = true;
-                } else if ( this.url.length === 0 || this.url.length > 300 ) {
+                } else if (!isUrl(this.url)) {
                     this.errList.url = true;
                 } else {
                     return true;
                 }
+                setTimeout(function(){
+                    me.errList = {};
+                }, 2000);
                 return false;
             },
             submit: function () {
-                if(  this.validator() ){
-                    alert('可以提交')
+                if( !this.validator() ){
+                    return;
                 }
+                var me = this;
+                $.ajax({
+                    url: '/api/opus/add',
+                    type: 'post',
+                    data: {
+                        title: this.title,
+                        intro: this.intro,
+                        cover: this.cover,
+                        url: this.url,
+                        githubFullName: this.githubFullName
+                    },
+                    success: function(){
+                        UI.prompt('创建成功！');
+                        me.title = '';
+                        me.intro = '';
+                        me.cover = '';
+                        me.url = '';
+                        me.githubFullName = '';
+                    },
+                    error: function(){
+                        UI.prompt('创建失败！');
+                    }
+
+                });
             }
         }
     })

@@ -19,11 +19,10 @@ module.exports = {
       url: params.url,
       githubFullName: params.githubFullName
     }).exec(function (err, finn){
-      if (err) { return res.forbidden(err); }
-      return res.ok({
-        err: err,
-        item: finn
-      });
+      if (err) {
+        return res.forbidden(err);
+      }
+      return res.ok(finn);
     });
   }
 };
