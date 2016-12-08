@@ -1,0 +1,15 @@
+@import "../less/_core.less";
+@import "../less/user-item.less";
+
+body{
+	background: #ddd;
+}
+.user-page{
+	margin-bottom: 20px;
+	.user-list {
+		padding: 0 20px;
+		.user-item + .user-item{
+			border-top: 1px solid #ccc;
+		}
+	}
+}

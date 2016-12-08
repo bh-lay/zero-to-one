@@ -1,3 +1,5 @@
+@import "_core.less";
+
 body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,p,blockquote {
 	margin: 0px;
 	padding: 0px
@@ -10,7 +12,7 @@ ul,ol,li,form,dl {
 }
 a {
 	text-decoration: none;
-	color: #333
+	color: #333;
 }
 a:hover {
 	color: #f70;
@@ -19,17 +21,31 @@ a:hover {
 body{
 	font-family: 'Helvetica Neue', Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 }
+.clearfix{
+	.clearfixfunction();
+}
 .container{
 	width: 1000px;
 	margin: auto;
 }
-.clearfix{
-	*zoom: 1;
-	&:after{
-		display: block;
-		content: "";
-		clear:both;
-		height: 0;
-		overflow: hidden;
+.pager{
+	@content-width: 700px;
+	@nav-height: 70px;
+	background: #f4f4f4;
+	box-shadow: 1px 1px 2px rgba(0,0,0,.1);
+	.clearfixfunction();
+	.pager-content{
+		float: left;
+		width: @content-width;
+		padding-top: @nav-height;
+		background: #fff;
+	}
+	.pager-sidebar{
+		float: right;
+		position: relative;
+		width: 1000 - @content-width;
+		min-height: 100%;
+		padding-top: @nav-height;
+		.borderbox();
 	}
 }

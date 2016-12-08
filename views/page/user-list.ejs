@@ -1,17 +1,20 @@
-
+<link rel="stylesheet" href="/styles/page/user-list.css">
 
 <div class="container">
-    <div class="opus-list clearfix">
-        <% userList.forEach(function( item, index ){ %>
-        <div class="opus-item">
-            <div class="cover" style="background-image: url(<%= item.cover %>)"></div>
-            <div class="intro">
-                <div class="title"><%= item.title %></div>
-                <div class="desc"><%= item.intro %></div>
-            </div>
-            <div class="data">
+    <div class="pager user-page">
+        <div class="pager-content">
+            <div class="user-list clearfix">
+                <% userList.forEach(function( item, index ){ %>
+                <div class="user-item">
+                    <img src="<%= item.avatar %>" alt="">
+                    <%= item.bio %>
+                    <%= item.githubAccount %>
+                    <%= JSON.stringify(item) %>
+                </div>
+                <% })%>
             </div>
         </div>
-        <% })%>
+        <aside class="pager-sidebar">
+        </aside>
     </div>
 </div>

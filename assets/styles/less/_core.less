@@ -33,3 +33,14 @@
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
+
+.clearfixfunction() {
+	*zoom: 1;
+	&:after{
+		display: block;
+		content: "";
+		clear:both;
+		height: 0;
+		overflow: hidden;
+	}
+}
