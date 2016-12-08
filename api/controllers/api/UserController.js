@@ -40,12 +40,8 @@ module.exports = {
           msg: "login failed"
         });
       }
-      //检测是否为管理员
-      if( user.role === "admin" ){
-        req.session.isAdmin = true;
-      }
-      // 将用户信息存储至session
-      req.session.loginUser = user;
+      // 设置登录状态
+      LoginStatus.setLogin(user);
       return res.jsonp({
         code: 200,
         msg: "login succes",

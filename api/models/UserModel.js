@@ -23,6 +23,22 @@ module.exports = {
     role: {
       type: 'string'
     },
+    avatar: {
+      type: 'string'
+    },
+    company: {
+      type: 'string'
+    },
+    blog: {
+      type: 'string'
+    },
+    email: {
+      type: 'string'
+    },
+    // biography 简介
+    bio: {
+      type: 'string'
+    },
     gender: {
       type: 'string'
     },
