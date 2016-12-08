@@ -1,0 +1,17 @@
+
+
+<div class="container">
+    <div class="opus-list clearfix">
+        <% userList.forEach(function( item, index ){ %>
+        <div class="opus-item">
+            <div class="cover" style="background-image: url(<%= item.cover %>)"></div>
+            <div class="intro">
+                <div class="title"><%= item.title %></div>
+                <div class="desc"><%= item.intro %></div>
+            </div>
+            <div class="data">
+            </div>
+        </div>
+        <% })%>
+    </div>
+</div>

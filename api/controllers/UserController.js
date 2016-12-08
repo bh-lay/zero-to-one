@@ -39,5 +39,22 @@ module.exports = {
                 opusList: opusList
             });
         });
+    },
+    list: function (req, res) {
+        var username = req.params.username;
+        UserModel.find({
+            limit: 20
+        }).exec(function(err, userList) {
+            if(err) {
+                return res.serverError('查找用户失败！');
+            }
+            return res.view( 'page/user-list', {
+                title: '发现更多好码农',
+                navigationClass: 'darken',
+                loginUser: req.session.loginUser,
+                layout: 'layout/app.ejs',
+                userList: userList
+            });
+        });
     }
 };
