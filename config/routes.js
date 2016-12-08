@@ -33,6 +33,9 @@ module.exports.routes = {
 	// 作品页面
 	'get /try/:opusid': 'OpusController.detail',
 
+	// SNS
+	'get /sns/:from': 'SnsController.main',
+
 	/**
 	 * 后台页面
 	 */
