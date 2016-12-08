@@ -31,7 +31,7 @@ module.exports = {
                 return res.notFound('用户不存在!');
             }
             return res.view( 'page/user-profile', {
-                title: '用户主页',
+                title: userInfo.nickName + '的个人主页',
                 navigationClass: '',
                 loginUser: req.session.loginUser,
                 layout: 'layout/app.ejs',
