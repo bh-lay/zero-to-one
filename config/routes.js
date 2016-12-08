@@ -30,6 +30,8 @@ module.exports.routes = {
 	'get /publish': 'OpusController.add',
 	// 用户首页
 	'get /catch/:username': 'userController.detail',
+	// 作品列表
+	'get /try': 'OpusController.list',
 	// 作品页面
 	'get /try/:opusid': 'OpusController.detail',
 
