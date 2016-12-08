@@ -152,15 +152,31 @@ nav.navigation{
 				background: #f60;
 			}
 		}
-		.login-btn,
-		.register-btn,
 		.github-login{
-			display: inline-block;
-			height: @nav_height;
-			line-height: @nav_height;
-			padding: 0 10px;
+			display: block;
+			position: relative;
+			top: 14px;
+			width: 80px;
+			height: @nav_height - 28px;
+			line-height: @nav_height - 28px;
 			font-size: 14px;
+			text-align: center;
 			color: #fff;
+			.transition(.2s);
+			svg{
+				margin-right: 5px;
+			}
+			svg,
+			span{
+				display: inline-block;
+				vertical-align: middle;
+			}
+			&:hover{
+				background: #f80;
+			}
+			&:active{
+				background: #f60;
+			}
 		}
 	}
 	&:hover,
