@@ -4,24 +4,19 @@
 var https = require('https');
 var querystring = require('querystring');
 
-var CONF = {
-	'client_id' : '64632b702a52a34814f7',
-	'client_secret' : '**********',
-	'redirect_uri' : 'http://i-fe.cc/sns/github'
-}
 function getToken(code, callback){
 	var postData = querystring.stringify({
-		'client_id' : CONF['client_id'],
-		'client_secret' : CONF['client_secret'],
-		'code' : code,
-		'redirect_uri' : CONF['redirect_uri']
+		client_id: sails.config.githubSDK['client_id'],
+		client_secret: sails.config.githubSDK['client_secret'],
+		code: code,
+		redirect_uri: sails.config.githubSDK['redirect_uri']
 	});
 	var request = https.request({
-		'hostname' : 'github.com',
-		'port' : 443,
-		'path' : '/login/oauth/access_token',
-		'method' : 'POST',
-		'headers' : {
+		hostname: 'github.com',
+		port: 443,
+		path: '/login/oauth/access_token',
+		method: 'POST',
+		headers: {
 			'Content-Type' : 'application/x-www-form-urlencoded',
 			'User-Agent' : 'L-plain-text',
 			'Content-Length' : postData.length
@@ -48,17 +43,17 @@ function getToken(code, callback){
 function getUserInfo(accessToken, callback){
 
 	var getDataStr = querystring.stringify({
-		'access_token' : accessToken
+		access_token: accessToken
 	});
 
 	//console.log('get userinfo');
 	//console.log(getDataStr);
 	var request = https.request({
-		'hostname' : 'api.github.com',
-		'port' : 443,
-		'path' : '/user?' + getDataStr,
-		'method' : 'GET',
-		'headers' : {
+		hostname: 'api.github.com',
+		port: 443,
+		path: '/user?' + getDataStr,
+		method: 'GET',
+		headers: {
 			'Content-Type' : 'text/html',
 			'User-Agent' : 'L-plain-text',
 		}
