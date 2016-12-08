@@ -4,6 +4,8 @@
  * @description :: Server-side logic for managing users
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+var moment = require('moment');
+
 function getUserInfo(username, callback) {
     UserModel.findOne({
         username: username
@@ -48,6 +50,10 @@ module.exports = {
             if(err) {
                 return res.serverError('查找用户失败！');
             }
+            // 调整时间格式
+            userList.forEach(function (item) {
+                item.createdAt = moment(item.createdAt).format('YYYY-M-D');
+            });
             return res.view( 'page/user-list', {
                 title: '发现更多好码农',
                 navigationClass: 'darken',
