@@ -7,13 +7,25 @@
                 <% userList.forEach(function( item, index ){ %>
                 <div class="user-item">
                     <div class="avatar">
-                        <img src="<%= item.avatar %>" alt="">
+                        <a href="/catch/<%= item.username %>">
+                            <img src="<%= item.avatar %>" alt="">
+                        </a>
                     </div>
                     <div class="item-body">
-                        <div class="nickname"><%= item.nickName %><small><%= item.username %></small></div>
+                        <div class="nickname">
+                            <a href="/catch/<%= item.username %>">
+                                <%= item.nickName %><small><%= item.username %></small>
+                            </a>
+                        </div>
                         <div class="biography"><%= item.bio %></div>
                         <% if(item.company) { %>
-                        <div class="company">公司：<%= item.company %></div>
+                        <div class="company">
+                            <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" t="1481210331822" style="" viewBox="0 0 1195 1024" version="1.1" p-id="3123">
+                                <defs><style type="text/css"/></defs>
+                                <path d="M1038.08 170.24 852.48 170.24 852.48 85.76C852.48 38.4 812.8 0 765.44 0L427.52 0c-48.64 0-87.04 38.4-87.04 85.76l0 85.76L154.88 171.52c-85.76 0-154.88 69.12-154.88 153.6L0 870.4c0 84.48 69.12 153.6 154.88 153.6l884.48 0c85.76 0 154.88-69.12 154.88-153.6L1194.24 323.84C1194.24 239.36 1123.84 170.24 1038.08 170.24L1038.08 170.24zM382.72 85.76c0-23.04 20.48-42.24 44.8-42.24l337.92 0c24.32 0 44.8 19.2 44.8 42.24l0 85.76L382.72 171.52 382.72 85.76 382.72 85.76zM154.88 213.76l884.48 0c62.72 0 112.64 49.92 112.64 111.36l0 102.4L42.24 427.52l0-102.4C42.24 263.68 92.16 213.76 154.88 213.76L154.88 213.76zM721.92 469.76c-11.52 48.64-64 85.76-125.44 85.76-61.44 0-113.92-37.12-125.44-85.76L721.92 469.76 721.92 469.76zM1038.08 981.76 154.88 981.76c-62.72 0-112.64-49.92-112.64-111.36L42.24 469.76 427.52 469.76c11.52 71.68 83.2 128 168.96 128 85.76 0 157.44-56.32 168.96-128l386.56 0L1152 870.4C1150.72 931.84 1100.8 981.76 1038.08 981.76L1038.08 981.76zM1038.08 981.76" p-id="3721"></path>
+                            </svg>
+                            <span><%= item.company %></span>
+                        </div>
                         <% } %>
                         <div class="links">
                             <% if(item.githubAccount) { %>
@@ -32,9 +44,7 @@
                                 <span>博客</span>
                             </a>
                             <% } %>
-                        </div>
-                        <div class="join">
-                            <span><%= item.createdAt %></span>加入
+                            <span class="join"><%= item.createdAt %> 加入</span>
                         </div>
                     </div>
                 </div>
