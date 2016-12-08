@@ -6,10 +6,27 @@
             <div class="user-list clearfix">
                 <% userList.forEach(function( item, index ){ %>
                 <div class="user-item">
-                    <img src="<%= item.avatar %>" alt="">
-                    <%= item.bio %>
-                    <%= item.githubAccount %>
-                    <%= JSON.stringify(item) %>
+                    <div class="avatar">
+                        <img src="<%= item.avatar %>" alt="">
+                    </div>
+                    <div class="item-body">
+                        <div class="nickname"><%= item.nickName %><small><%= item.username %></small></div>
+                        <div class="biography"><%= item.bio %></div>
+                        <% if(item.company) { %>
+                        <div class="company">公司：<%= item.company %></div>
+                        <% } %>
+                        <div class="links">
+                            <% if(item.githubAccount) { %>
+                            <a href="https://github.com/<%= item.githubAccount %>">Github</a>
+                            <% } %>
+                            <% if(item.blog) { %>
+                            <a href="<%= item.blog %>">博客</a>
+                            <% } %>
+                        </div>
+                        <p>
+                            <%= JSON.stringify(item) %>
+                        </p>
+                    </div>
                 </div>
                 <% })%>
             </div>
