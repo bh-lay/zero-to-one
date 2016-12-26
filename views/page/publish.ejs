@@ -25,7 +25,7 @@
                                 <input type="file" name="cover" @change="uploadFile">
                             </form>
                         </div>
-                        <div v-if="cover.length">显示图片</div>
+                        <div v-if="cover.length"><img v-bind:src="cover" ></div>
                     </div>
                 </div>
                 <div class="input-item clearfix" v-bind:class="{inputError: this.errList.url}">
@@ -51,7 +51,10 @@
     function isUrl( input ){
         return !!( input || '').match(/^http(s|):\/\/[^\.]+\.[^\.]+/);
     }
-    function uploadFile(fileInput){
+    function uploadFile(fileInput, callback){
+        if (!callback) {
+           return;
+        }
         $.ajax({
             url: '/api/opus/addCover',
             type: 'POST',
@@ -60,8 +63,10 @@
             processData: false,  // 关键点
             contentType: false  // 关键点
         }).done(function(res) {
-            consoel.log(res)
-        }).fail(function(res) {});
+            callback(null, res);
+        }).fail(function(res) {
+            callback(res);
+        });
     }
     var vm = new Vue({
         el: '.publish-opus',
@@ -95,14 +100,20 @@
                 return false;
             },
             uploadFile: function (e) {
-                var file = e.target.files[0],
+                var me = this,
+                    file = e.target.files[0],
                     supportedTypes = ['image/jpg', 'image/jpeg', 'image/png'];
                 if( !file ){
                     return;
                 }
                 if (supportedTypes.indexOf(file.type) >= 0) {
 //                    this.file = file;
-                    uploadFile(e.target);
+                    uploadFile(e.target, function(err, data){
+                        if (err){
+                            return;
+                        }
+                        me.cover = data.url;
+                    });
                 } else {
                     UI.prompt('只能上传图片呦！');
                 }

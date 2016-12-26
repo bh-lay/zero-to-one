@@ -5,6 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 var fs = require('fs');
+var path = require('path');
 
 module.exports = {
   list: function (req, res) {
@@ -29,7 +30,7 @@ module.exports = {
   addCover: function (req, res) {
     req.file('cover').upload({
       // 上限10M ~10MB
-      maxBytes: 10000000
+      maxBytes: 10000000,
     },function (err, uploadedFiles) {
       // var responseJSON = {
       //   code: 0
@@ -58,14 +59,13 @@ module.exports = {
         });
       }
 
-      var fileDomain = 'http://127.0.0.1:2333';
-      var fileDomainRoot = '/Users/baidu/Github/publicAssetServer';
-
       var randomID = (new Date().getTime()*100000 + Math.ceil( Math.random() * 100000 )).toString(36);
-
-      var newFilename = randomID + extensionMatch[0];
-      var fileRelativePath = '/ife/avatar/' + newFilename;
-      var newFilePath = fileDomainRoot + fileRelativePath;
+      // 动态生成新文件
+      var newFilename = randomID + extensionMatch[0].toLocaleLowerCase();
+      // 文件相对根目录的路径
+      var fileRelativePath = path.join(sails.config.upload.avatarPath, newFilename);
+      // 文件存储目录
+      var newFilePath = path.join(sails.config.upload.root, fileRelativePath);
 
       // 移动临时文件至新的目录
       fs.rename(file.fd, newFilePath, function(){
@@ -77,7 +77,7 @@ module.exports = {
         }
         return res.ok({
           code: 0,
-          url: fileDomain + fileRelativePath
+          url: sails.config.upload.domain + fileRelativePath
         });
       });
     });
