@@ -21,7 +21,9 @@
                     <label>封面图</label>
                     <div class="input-body">
                         <div v-if="!cover.length">
-                            <input type="file" @change="uploadFile">
+                            <form enctype="multipart/form-data" method="post" name="fileinfo">
+                                <input type="file" name="cover" @change="uploadFile">
+                            </form>
                         </div>
                         <div v-if="cover.length">显示图片</div>
                     </div>
@@ -51,13 +53,14 @@
     }
     function uploadFile(fileInput){
         $.ajax({
-            url: '后台接受图片地址',
+            url: '/api/opus/addCover',
             type: 'POST',
             cache: false,
-            data: new FormData(fileInput),
+            data: new FormData(fileInput.parentNode),
             processData: false,  // 关键点
             contentType: false  // 关键点
         }).done(function(res) {
+            consoel.log(res)
         }).fail(function(res) {});
     }
     var vm = new Vue({

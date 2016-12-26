@@ -54,5 +54,6 @@ module.exports.routes = {
 	'post /api/user/logout': 'api/UserController.logout',
 
 	// 作品
-	'post /api/opus/add': 'api/OpusController.add'
+	'post /api/opus/add': 'api/OpusController.add',
+	'post /api/opus/addCover': 'api/OpusController.addCover'
 };
