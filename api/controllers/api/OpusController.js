@@ -73,41 +73,51 @@ module.exports = {
       // 文件存储目录
       var newFilePath = path.join(sails.config.upload.root, fileRelativePath);
 
-      // 移动临时文件至新的目录
+      // 剪裁图片
       imageMagick(file.fd)
-          .autoOrient()
-          .noProfile()
-          .size(function (err, size) {
-            if (err) {
-              return res.ok({
-                code: 205,
-                msg: '处理文件失败'
-              });
-            }
-            var width = Math.min(size.width, size.height);
-            var top = 0,
-                left = 0;
-            if (size.width > size.height) {
-              left = (size.width - width)/2;
-            } else {
-              top = (size.height - width)/2
-            }
+        .autoOrient()
+        .noProfile()
+        .size(function(err, size) {
+          if (err) {
+            return res.ok({
+              code: 205,
+              msg: '处理文件失败'
+            });
+          }
+          var saveWidth = 500;
+          var newWidth = saveWidth;
+          var newHeight = saveWidth;
+          var xoffset = 0;
+          var yoffset = 0;
 
-            this.crop(width, width, top, left)
-                .resize(500, 500, '!')
-                .write(newFilePath, function(err){
-                  if (err) {
-                    return res.ok({
-                      code: 205,
-                      msg: '处理文件失败'
-                    });
-                  }
+          if (size.width < size.height) {
+            newHeight = saveWidth * size.height / size.width;
+          } else {
+            newWidth  = saveWidth * size.width / size.height;
+          }
 
+          if (saveWidth < newWidth) {
+            xoffset = (newWidth - saveWidth)/2;
+          }
+          if (saveWidth < newHeight) {
+            yoffset = (newHeight - saveWidth)/2;
+          }
+          this
+              .quality(80)
+              .resize(newWidth, newHeight, "!")
+              .crop(saveWidth, saveWidth, xoffset, yoffset)
+              .write(newFilePath, function(err){
+                if (err) {
                   return res.ok({
-                    code: 0,
-                    url: sails.config.upload.domain + fileRelativePath
+                    code: 205,
+                    msg: '处理文件失败'
                   });
+                }
+                return res.ok({
+                  code: 0,
+                  url: sails.config.upload.domain + fileRelativePath
                 });
+              });
           });
     });
 

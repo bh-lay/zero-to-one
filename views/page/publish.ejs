@@ -20,12 +20,15 @@
                 <div class="input-item clearfix item-cover" v-bind:class="{inputError: this.errList.cover}">
                     <label>封面图</label>
                     <div class="input-body">
-                        <div v-if="!cover.length">
-                            <form enctype="multipart/form-data" method="post" name="fileinfo">
-                                <input type="file" name="cover" @change="uploadFile">
-                            </form>
+                        <a v-if="!cover.length" href="javascript:void(0)" class="add" @click="uploadFile">
+                            <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2900">
+                                <path d="M329.453431 385.272737c0-23.951505 19.417235-43.370787 43.370787-43.370787 23.951505 0 43.369763 19.419282 43.369763 43.370787s-19.419282 43.370787-43.369763 43.370787C348.870666 428.643524 329.453431 409.225265 329.453431 385.272737zM472.064452 548.378535l-63.473637-30.692023-105.97359 102.455463 95.591125 0 222.267223 0 100.908224 0L572.243059 451.039603 472.064452 548.378535zM727.541031 912.296919l52.18043 0 0-31.242562-52.18043 0L727.541031 912.296919zM686.190251 140.831492 686.190251 111.909789l-52.832276 0 0 28.921703L686.190251 140.831492zM865.11841 140.647297c11.186783 0 13.495362 7.765871 13.495362 18.952654l0 43.119053 33.68417 0 0-68.191078c0-12.606109-10.220782-22.826891-22.826891-22.826891l-72.52785 0 0 28.945239L865.11841 140.646274zM778.960121 140.831492 778.960121 111.909789l-49.302893 0 0 28.921703L778.960121 140.831492zM490.143203 111.909789l-50.14405 0 0 28.921703 50.14405 0L490.143203 111.909789zM912.297942 816.943201l-33.68417 0-0.023536 0 0 52.28583c0.023536 9.18008-4.649903 11.803837-10.233062 11.803837l-51.414997 0 0 31.266098 72.52785 0c6.303566 0 12.010545-2.555196 16.141632-6.686283 0.361227-0.36225 0.638543-0.797156 0.975211-1.181919 1.587148-1.814322 2.963495-3.821025 3.917216-6.074346 1.155313-2.730181 1.793856-5.733585 1.793856-8.885368L912.297942 816.943201 912.297942 816.943201zM394.420071 111.909789l-53.400211 0 0 28.921703 53.400211 0L394.420071 111.909789zM912.297942 627.722628l-33.68417 0 0 52.832276 33.68417 0L912.297942 627.722628zM912.297942 530.72548l-33.68417 0 0 52.124148 33.68417 0L912.297942 530.72548zM912.296919 238.643192l-33.68417 0 0 52.18043 33.68417 0L912.296919 238.643192zM878.612749 388.784724l33.68417 0 0-53.399187-33.68417 0L878.612749 388.784724zM878.612749 484.508879l33.68417 0 0-50.145074-33.68417 0L878.612749 484.508879zM912.297942 724.021881l-33.68417 0 0 54.93824 33.68417 0L912.297942 724.021881zM144.134725 239.404532l-32.432667 0 0 54.937217 32.432667 0L144.134725 239.404532zM588.484975 111.909789l-52.124148 0 0 28.921703 52.124148 0L588.484975 111.909789zM435.515025 912.297942l52.124148 0 0-31.242562-52.124148 0L435.515025 912.297942zM337.808726 881.05538l0 31.242562 52.833299 0 0-31.242562L337.808726 881.05538zM244.278539 140.831492l52.18043 0L296.458969 111.909789l-52.18043 0L244.278539 140.831492zM245.039879 881.05538l0 31.242562 49.303916 0 0-31.242562L245.039879 881.05538zM629.579929 912.296919l53.399187 0 0-31.242562-53.399187 0L629.579929 912.296919zM533.856797 912.296919l50.145074 0 0-31.242562-50.145074 0L533.856797 912.296919zM144.134725 441.150372l-32.432667 0 0 46.488801 32.432667 0L144.134725 441.150372zM144.134725 533.856797l-32.432667 0 0 50.145074 32.432667 0L144.134725 533.856797zM111.702058 779.720438l32.432667 0 0-52.179406-32.432667 0L111.702058 779.720438zM111.702058 134.527926l0 72.52785 32.432667 0 0-52.702316c0-11.187807 4.254907-13.707187 15.441691-13.707187l47.480384 0L207.056799 111.702058l-72.52785 0C121.92284 111.702058 111.702058 121.921817 111.702058 134.527926zM144.134725 337.808726l-32.432667 0 0 52.833299 32.432667 0L144.134725 337.808726zM144.134725 635.215276l-32.432667 0 0 47.76384 32.432667 0L144.134725 635.215276zM207.056799 881.031844l-52.725852 0c-5.585205 0-10.196223-4.589528-10.17371-15.298428l0-48.79124-32.456203 0 0 72.52785c0 12.607132 10.220782 22.826891 22.826891 22.826891l0.001023 0 72.52785 0 0-31.242562L207.056799 881.031844z"></path>
+                            </svg>
+                        </a>
+                        <div class="cover" v-if="cover.length">
+                            <img v-bind:src="cover" >
+                            <a href="javascript:void(0)" class="edit" @click="uploadFile">重新上传</a>
                         </div>
-                        <div v-if="cover.length"><img v-bind:src="cover" ></div>
                     </div>
                 </div>
                 <div class="input-item clearfix" v-bind:class="{inputError: this.errList.url}">
@@ -45,30 +48,19 @@
                 <a href="javascript:void(0)" @click="submit" class="submit-btn">发布</a>
             </footer>
         </div>
+        <div class="publish-file">
+            <form enctype="multipart/form-data" method="post" id="fileUpload">
+                <input type="file" name="cover" @change="fileChange">
+            </form>
+        </div>
     </div>
 </div>
 <script>
     function isUrl( input ){
         return !!( input || '').match(/^http(s|):\/\/[^\.]+\.[^\.]+/);
     }
-    function uploadFile(fileInput, callback){
-        if (!callback) {
-           return;
-        }
-        $.ajax({
-            url: '/api/opus/addCover',
-            type: 'POST',
-            cache: false,
-            data: new FormData(fileInput.parentNode),
-            processData: false,  // 关键点
-            contentType: false  // 关键点
-        }).done(function(res) {
-            callback(null, res);
-        }).fail(function(res) {
-            callback(res);
-        });
-    }
-    var vm = new Vue({
+
+    var vuePublish = new Vue({
         el: '.publish-opus',
         data: {
             title: '',
@@ -82,7 +74,6 @@
             validator: function(){
                 var me = this;
                 this.errList = {};
-                return true;
                 if(this.title.length === 0 || this.title.length > 30) {
                     this.errList.title = true;
                 } else if (this.intro.length === 0 || this.intro.length > 300) {
@@ -100,26 +91,11 @@
                 return false;
             },
             uploadFile: function (e) {
-                var me = this,
-                    file = e.target.files[0],
-                    supportedTypes = ['image/jpg', 'image/jpeg', 'image/png'];
-                if( !file ){
-                    return;
-                }
-                if (supportedTypes.indexOf(file.type) >= 0) {
-//                    this.file = file;
-                    uploadFile(e.target, function(err, data){
-                        if (err){
-                            return;
-                        }
-                        me.cover = data.url;
-                    });
-                } else {
-                    UI.prompt('只能上传图片呦！');
-                }
+                $('#fileUpload input').trigger('click');
             },
             submit: function () {
                 if( !this.validator() ){
+                    UI.prompt('请检查输入！');
                     return;
                 }
                 var me = this;
@@ -148,5 +124,41 @@
                 });
             }
         }
-    })
+    });
+    var vueFile = new Vue({
+        el: '.publish-file',
+        data: {
+        },
+        methods: {
+            fileChange: function (e) {
+                var file = e.target.files[0],
+                    supportedTypes = ['image/jpg', 'image/jpeg', 'image/png'];
+                if( !file ){
+                    return;
+                }
+                if (supportedTypes.indexOf(file.type) >= 0) {
+                    this.uploadFile();
+                } else {
+                    UI.prompt('只能上传图片呦！');
+                }
+            },
+            uploadFile: function (){
+                if (!callback) {
+                    return;
+                }
+                $.ajax({
+                    url: '/api/opus/addCover',
+                    type: 'POST',
+                    cache: false,
+                    data: new FormData($('#fileUpload')[0]),
+                    processData: false,
+                    contentType: false
+                }).done(function(res) {
+                    vuePublish.cover = res.url;
+                }).fail(function(res) {
+                    UI.prompt(res);
+                });
+            }
+        }
+    });
 </script>
