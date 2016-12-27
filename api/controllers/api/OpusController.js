@@ -48,7 +48,6 @@ module.exports = {
 
       }
 
-      // If no files were uploaded, respond with an error.
       if (uploadedFiles.length === 0){
         return res.badRequest({
           code: 203,
@@ -69,7 +68,7 @@ module.exports = {
       // 动态生成新文件
       var newFilename = randomID + extensionMatch[0].toLocaleLowerCase();
       // 文件相对根目录的路径
-      var fileRelativePath = path.join(sails.config.upload.avatarPath, newFilename);
+      var fileRelativePath = path.join(sails.config.upload.opusPath, newFilename);
       // 文件存储目录
       var newFilePath = path.join(sails.config.upload.root, fileRelativePath);
 
