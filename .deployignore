@@ -1,0 +1,11 @@
+# github认证
+config/githubSDK.js
+
+# 数据库连接
+config/connection.js
+
+# session数据库
+config/session.js
+
+# 文件上传
+config/upload.js
