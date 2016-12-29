@@ -37,6 +37,12 @@ module.exports.routes = {
 	// 作品页面
 	'get /try/:opusid': 'OpusController.detail',
 
+	/**
+	 * 设置页面
+ 	 */
+	// 个人信息设置
+	'get /settings/profile': 'SettingsController.profile',
+
 	// SNS
 	'get /sns/:from': 'SnsController.main',
 

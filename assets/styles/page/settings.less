@@ -1,0 +1,127 @@
+@import "../less/_core.less";
+
+
+body{
+	background: #ddd;
+}
+.setting-page{
+	margin-bottom: 20px;
+}
+
+.setting-profile{
+	h1{
+		margin-bottom: 20px;
+		padding: 10px 20px;
+		line-height: 20px;
+		font-size: 18px;
+		border-bottom: 1px solid #ccc;
+	}
+	.input-list{
+		padding: 0 20px;
+	}
+	.input-item{
+		margin-bottom: 20px;
+		label{
+			display: block;
+			float: left;
+			width: 80px;
+			font-size: 12px;
+		}
+		.input-body{
+			margin-left: 80px;
+			border: 1px solid #ccc;
+		}
+		input,
+		textarea{
+			display: block;
+			width: 100%;
+			padding: 10px 15px;
+			border: none;
+			font-size: 14px;
+			.borderbox();
+			&:focus{
+				outline: none;
+				border-color: #555;
+			}
+		}
+		input{
+			height: 36px;
+			line-height: 16px;
+		}
+		textarea{
+			height: 100px;
+			line-height: 18px;
+			resize: vertical;
+		}
+		&.inputError .input-body{
+			border-color: #f00;
+		}
+	}
+	footer{
+		padding: 0 0 20px 100px;
+	}
+	.submit-btn{
+		display: inline-block;
+		vertical-align: middle;
+		width: 80px;
+		height: 40px;
+		line-height: 40px;
+		background: #fa0;
+		font-size: 14px;
+		text-align: center;
+		color: #fff;
+		.transition(.2s);
+		&:hover{
+			background: #f80;
+		}
+		&:active{
+			background: #f60;
+		}
+	}
+}
+.item-cover {
+	.input-body{
+		width: 120px;
+		height: 120px;
+		background: #fafafa;
+		overflow: hidden;
+	}
+	a.add,
+	.cover,
+	img{
+		position: relative;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	a.add{
+		text-align: center;
+		svg {
+			width: 60px;
+			margin-top: 30px;
+			fill: #555;
+		}
+		&:hover{
+			background: #eee;
+		}
+	}
+	a.edit{
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 5px 10px;
+		background: rgba(0,0,0,.5);
+		font-size: 12px;
+		color: #fff;
+		opacity: 0;
+		.transition(.2s);
+	}
+	&:hover{
+		a.edit{
+			opacity: 1;
+		}
+	}
+}
+.publish-file{
+	display: none;
+}
