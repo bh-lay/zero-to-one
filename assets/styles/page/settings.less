@@ -9,15 +9,15 @@ body{
 }
 
 .setting-profile{
-	h1{
+	.settings-page-title{
 		margin-bottom: 20px;
-		padding: 10px 20px;
+		padding: 30px 20px 20px;
 		line-height: 20px;
-		font-size: 18px;
-		border-bottom: 1px solid #ccc;
+		font-size: 22px;
+		border-bottom: 1px solid #f4f4f4;
 	}
 	.input-list{
-		padding: 0 20px;
+		padding: 0 20px 0 30px;
 	}
 	.input-item{
 		margin-bottom: 20px;
@@ -28,8 +28,20 @@ body{
 			font-size: 12px;
 		}
 		.input-body{
-			margin-left: 80px;
+			margin-left: 90px;
 			border: 1px solid #ccc;
+		}
+		.input-content{
+			margin-left: 90px;
+		}
+		.username{
+			padding-left: 5px;
+			font-size: 22px;
+			small{
+				padding-left: 10px;
+				font-size: 12px;
+				color: #888;
+			}
 		}
 		input,
 		textarea{
@@ -58,7 +70,7 @@ body{
 		}
 	}
 	footer{
-		padding: 0 0 20px 100px;
+		padding: 0 0 20px 120px;
 	}
 	.submit-btn{
 		display: inline-block;
@@ -79,49 +91,37 @@ body{
 		}
 	}
 }
-.item-cover {
-	.input-body{
-		width: 120px;
-		height: 120px;
-		background: #fafafa;
-		overflow: hidden;
-	}
-	a.add,
-	.cover,
-	img{
-		position: relative;
-		display: block;
-		width: 100%;
-		height: 100%;
-	}
-	a.add{
+.gender-selector{
+	@height: 50px;
+	width: 160px;
+	height: @height;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	overflow: hidden;
+	cursor: pointer;
+	.male-item,
+	.female-item{
+		width: 50%;
+		height: @height;
+		float: left;
 		text-align: center;
-		svg {
-			width: 60px;
-			margin-top: 30px;
-			fill: #555;
-		}
-		&:hover{
-			background: #eee;
-		}
 	}
-	a.edit{
-		position: absolute;
-		top: 0;
-		right: 0;
-		padding: 5px 10px;
-		background: rgba(0,0,0,.5);
+	svg {
+		width: 26px;
+		height: 26px;
+		margin: 5px auto;
+		vertical-align: text-bottom;
+		fill: #9fadc7;
+	}
+	span{
+		display: block;
+		line-height: 1;
 		font-size: 12px;
-		color: #fff;
-		opacity: 0;
-		.transition(.2s);
+		color: #bdc9de;
 	}
-	&:hover{
-		a.edit{
-			opacity: 1;
-		}
+	&.female .female-item,
+	&.male .male-item{
+		background: #eee;
 	}
-}
-.publish-file{
-	display: none;
 }
