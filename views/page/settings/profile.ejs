@@ -79,98 +79,15 @@
         return !!( input || '').match(/^http(s|):\/\/[^\.]+\.[^\.]+/);
     }
     var userInfo = <%- JSON.stringify(loginUser) %>;
-    userInfo.errList = {};
-    var vuePublish = new Vue({
+    var vueSettingsProfile = new Vue({
         el: '.setting-profile',
         data: userInfo,
         methods: {
-            validator: function(){
-                var me = this;
-                this.errList = {};
-                if(this.title.length === 0 || this.title.length > 30) {
-                    this.errList.title = true;
-                } else if (this.intro.length === 0 || this.intro.length > 300) {
-                    this.errList.intro = true;
-                } else if (this.cover.length === 0 ){
-                    this.errList.cover = true;
-                } else if (!isUrl(this.url)) {
-                    this.errList.url = true;
-                } else {
-                    return true;
-                }
-                setTimeout(function(){
-                    me.errList = {};
-                }, 2000);
-                return false;
-            },
             toggleGender: function(){
                 this.gender = this.gender == "male" ? "female" : 'male';
             },
             submit: function () {
-                if( !this.validator() ){
-                    UI.prompt('请检查输入！');
-                    return;
-                }
-                var me = this;
-                $.ajax({
-                    url: '/api/opus/add',
-                    type: 'post',
-                    data: {
-                        title: this.title,
-                        intro: this.intro,
-                        cover: this.cover,
-                        url: this.url,
-                        githubFullName: this.githubFullName
-                    },
-                    success: function(){
-                        UI.prompt('创建成功！');
-                        me.title = '';
-                        me.intro = '';
-                        me.cover = '';
-                        me.url = '';
-                        me.githubFullName = '';
-                    },
-                    error: function(){
-                        UI.prompt('创建失败！');
-                    }
-
-                });
-            }
-        }
-    });
-    var vueFile = new Vue({
-        el: '.publish-file',
-        data: {
-        },
-        methods: {
-            fileChange: function (e) {
-                var file = e.target.files[0],
-                    supportedTypes = ['image/jpg', 'image/jpeg', 'image/png'];
-                if( !file ){
-                    return;
-                }
-                if (supportedTypes.indexOf(file.type) >= 0) {
-                    this.uploadFile();
-                } else {
-                    UI.prompt('只能上传图片呦！');
-                }
-            },
-            uploadFile: function (){
-                if (!callback) {
-                    return;
-                }
-                $.ajax({
-                    url: '/api/opus/addCover',
-                    type: 'POST',
-                    cache: false,
-                    data: new FormData($('#fileUpload')[0]),
-                    processData: false,
-                    contentType: false
-                }).done(function(res) {
-                    vuePublish.cover = res.url;
-                }).fail(function(res) {
-                    UI.prompt(res);
-                });
+                UI.prompt('这块儿还没写呢！');
             }
         }
     });
