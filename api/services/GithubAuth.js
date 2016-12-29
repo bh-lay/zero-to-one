@@ -29,7 +29,7 @@ function getToken(code, callback){
 			var res_json = querystring.parse(res_data);
 			var err = null;
 			if(res_json.error){
-				err = 'error';
+				err = res_json.error;
 			}
 			callback&&callback(err, res_json);
 		});
@@ -37,7 +37,7 @@ function getToken(code, callback){
 	request.write(postData);
 	request.end();
 	request.on('error', function(e) {
-		callback&&callback(e,null);
+		callback&&callback(e, null);
 	});
 }
 function getUserInfo(accessToken, callback){
@@ -45,9 +45,6 @@ function getUserInfo(accessToken, callback){
 	var getDataStr = querystring.stringify({
 		access_token: accessToken
 	});
-
-	//console.log('get userinfo');
-	//console.log(getDataStr);
 	var request = https.request({
 		hostname: 'api.github.com',
 		port: 443,
@@ -65,7 +62,7 @@ function getUserInfo(accessToken, callback){
 			var res_json = querystring.parse(res_data);
 			var err = null;
 			if(res_json.error){
-				err = 'error';
+				err = res_json.error;
 			}
 
 			res_json = JSON.parse(res_data);
@@ -83,19 +80,19 @@ function getUserInfo(accessToken, callback){
 exports.getToken = getToken;
 exports.getUserInfo = getUserInfo;
 exports.login = function(code, callback){
-	function error(){
-		callback && callback('auth error');
+	function error(err){
+		callback && callback(err);
 	}
 	if( !code || code.length < 5 ){
-		return error();
+		return error('code length incorrect');
 	}
 	getToken(code, function(err, data){
 		if(err){
-			return error();
+			return error(err);
 		}
 		getUserInfo(data.access_token, function(err, userInfo){
 			if(err){
-				return error();
+				return error(err);
 			}
 			callback && callback(null, userInfo);
 		});
