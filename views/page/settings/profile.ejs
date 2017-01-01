@@ -86,7 +86,17 @@
             setFemale: function(){
                 this.gender = "female";
             },
+            parse: function () {
+                return {
+                    gender: this.gender,
+                    nickName: this.nickName,
+                    company: this.company,
+                    bio: this.bio
+                }
+            },
             submit: function () {
+                console.log(this.parse())
+//                if () {}
                 UI.prompt('这块儿还没写呢！');
             }
         }

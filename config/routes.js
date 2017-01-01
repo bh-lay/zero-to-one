@@ -58,6 +58,8 @@ module.exports.routes = {
 	// 登录登出
 	'post /api/user/login': 'api/UserController.login',
 	'post /api/user/logout': 'api/UserController.logout',
+	// 修改个人信息
+	'post /api/user/update': 'api/UserController.update',
 
 	// 作品
 	'post /api/opus/add': 'api/OpusController.add',

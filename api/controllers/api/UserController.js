@@ -12,6 +12,31 @@ function passwordToHash( text ){
   return crypto.createHash('sha256').update( password + '-' + salt ).digest('hex');
 }
 module.exports = {
+  update: function (req, res) {
+    var loginUser = req.session.loginUser;
+    if (!loginUser || !loginUser.id){
+      return res.json({
+        code: 201
+      });
+    }
+    var updateData = {
+      gender: req.body.gender,
+      nickName: req.body.nickName,
+      company: req.body.company,
+      bio: req.body.bio
+    };
+
+    // UserModel.update({
+    //   id: loginUser.id
+    // }, updateData).exec(function (err, updated){
+    //   if (err) {
+    //     // handle error here- e.g. `res.serverError(err);`
+    //     return;
+    //   }
+    //
+    //   console.log('Updated user to have name ' + updated[0].name);
+    // });
+  },
   list: function (req, res) {
     UserModel.find().exec(function(err, user) {
       return res.jsonp({
