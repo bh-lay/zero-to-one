@@ -26,16 +26,21 @@ module.exports = {
       bio: req.body.bio
     };
 
-    // UserModel.update({
-    //   id: loginUser.id
-    // }, updateData).exec(function (err, updated){
-    //   if (err) {
-    //     // handle error here- e.g. `res.serverError(err);`
-    //     return;
-    //   }
-    //
-    //   console.log('Updated user to have name ' + updated[0].name);
-    // });
+    UserModel.update({
+      id: loginUser.id
+    }, updateData).exec(function (err, updated) {
+      if (err) {
+        return res.json({
+          code: 202
+        });
+      }
+      var userInfo = updated[0];
+      LoginStatus.setUserSession(req, userInfo);
+      return res.json({
+        code: 200,
+        userInfo: userInfo
+      });
+    });
   },
   list: function (req, res) {
     UserModel.find().exec(function(err, user) {
@@ -66,7 +71,7 @@ module.exports = {
         });
       }
       // 设置登录状态
-      LoginStatus.setLogin(user);
+      LoginStatus.setUserSession(user);
       return res.jsonp({
         code: 200,
         msg: "login succes",

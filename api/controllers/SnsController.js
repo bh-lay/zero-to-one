@@ -33,7 +33,7 @@ function github(req, res, code){
         }).exec(function(err, userInfoFromDB) {
             if(!err && userInfoFromDB) {
                 // 设置登录状态
-                LoginStatus.setLogin(req, userInfoFromDB);
+                LoginStatus.setUserSession(req, userInfoFromDB);
                 return res.redirect('/catch/' + userInfoFromDB.username);
             }
             // 新增用户
@@ -42,7 +42,7 @@ function github(req, res, code){
                     return res.serverError('创建用户失败！');
                 }
                 // 设置登录状态
-                LoginStatus.setLogin(req, userInfoFromNewUser);
+                LoginStatus.setUserSession(req, userInfoFromNewUser);
                 return res.redirect('/catch/' + userInfoFromNewUser.username);
             });
         });
