@@ -63,7 +63,7 @@
             </div>
         <% } %>
         <% opusList.forEach(function( item, index ){ %>
-            <div class="opus-item">
+            <a class="opus-item" href="/try/<%= item.id%>" >
                 <div class="cover" style="background-image: url(<%= item.cover %>)"></div>
                 <div class="intro">
                     <div class="title"><%= item.title %></div>
@@ -71,7 +71,7 @@
                 </div>
                 <div class="data">
                 </div>
-            </div>
+            </a>
         <% })%>
     </div>
 </div>

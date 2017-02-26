@@ -24,7 +24,6 @@ function github(req, res, code){
     // 使用github登录
     GithubAuth.login(code, function(err, userInfoFromGithub) {
         if(err || !userInfoFromGithub){
-            console.log(err);
             return res.serverError('拉取用户信息失败！');
         }
         // 从数据库中查找是否已登录
