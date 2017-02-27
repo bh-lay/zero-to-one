@@ -4,12 +4,28 @@
  * @description :: Server-side logic for managing users
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
+function getOpusInfo(opusid, callback) {
+    OpusModel.findOne({
+        id: opusid
+    }).exec(function(err, opusInfo) {
+        if(err || !opusInfo) {
+            callback && callback(err || !opusInfo);
+            return;
+        }
+        callback && callback(null, opusInfo);
+    });
+}
 module.exports = {
     detail: function (req, res) {
-        return res.view( 'page/opus-detail', {
-            title: '作品页面'
+        var opusid = req.params.opusid;
+        getOpusInfo(opusid, function (err, opusInfo) {
+            return res.view( 'page/opus-detail', {
+                title: 'title:作品页面',
+                opusid: opusid,
+                opusInfo: opusInfo
+            });
         });
+
     },
     list: function (req, res) {
         OpusModel.find({
