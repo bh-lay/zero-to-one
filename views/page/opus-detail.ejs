@@ -1,6 +1,27 @@
-
-<title><%=typeof title == 'undefined' ? 'i-fe 爱前端' : title%></title>
-<h1>作品页面</h1>
-<%= opusid%>
-<hr>
-<%= JSON.stringify(opusInfo)%>
+<div class="side-bar">
+    <div class="opus-detail">
+        <div class="cover" style="background-image: url('<%= opusInfo.cover%>')">
+            <img src="<%= opusInfo.cover%>">
+        </div>
+        <h1><%= opusInfo.title%></h1>
+        <p><%= opusInfo.intro%></p>
+    </div>
+    <div class="user-card">
+        <a href="/catch/<%= userInfo.username%>">
+            <div class="avatar">
+                <img src="<%= userInfo.avatar%>" >
+            </div>
+            <div class="content">
+                <div class="nickname"><%= userInfo.nickName%></div>
+                <div class="bio"><%= userInfo.bio%></div>
+            </div>
+        </a>
+    </div>
+</div>
+<!--<%= JSON.stringify(opusInfo)%>-->
+<!--<hr>-->
+<!--<%= JSON.stringify(userInfo)%>-->
+<!--<div class="main-pager">-->
+    <!--&lt;!&ndash;<iframe src="<%= opusInfo.url%>" frameborder="0"></iframe>&ndash;&gt;-->
+    <!--<iframe src="https://www.baidu.com" frameborder="0"></iframe>-->
+<!--</div>-->

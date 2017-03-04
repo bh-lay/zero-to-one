@@ -15,14 +15,41 @@ function getOpusInfo(opusid, callback) {
         callback && callback(null, opusInfo);
     });
 }
+function getUserInfo(userid, callback) {
+    UserModel.findOne({
+        id: userid
+    }).exec(function(err, userInfo){
+        if (err || !userInfo) {
+            callback && callback(err || !userInfo);
+        } else {
+            callback && callback(null, userInfo)
+        }
+    });
+}
+function getOpusDetail(opusid, callback) {
+    getOpusInfo(opusid, function (err, opusInfo){
+        if (err) {
+            callback && callback(err);
+            return
+        }
+        getUserInfo(opusInfo.createBy, function(err, userInfo){
+            if (err) {
+                callback && callback(err);
+                return
+            }
+            callback && callback(null, opusInfo, userInfo);
+        });
+    });
+}
 module.exports = {
     detail: function (req, res) {
         var opusid = req.params.opusid;
-        getOpusInfo(opusid, function (err, opusInfo) {
+        getOpusDetail(opusid, function (err, opusInfo, userInfo) {
             return res.view( 'page/opus-detail', {
-                title: 'title:作品页面',
-                opusid: opusid,
-                opusInfo: opusInfo
+                title: opusInfo.title || '作品页面',
+                opusInfo: opusInfo,
+                userInfo: userInfo,
+                layout: 'layout/opus.ejs'
             });
         });
 
