@@ -1,0 +1,124 @@
+@import "less/_core.less";
+@import "less/base.less";
+
+html,
+body{
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+}
+body{
+	background: #f4f9ff;
+}
+.side-bar{
+	position: absolute;
+	width: 300px;
+	width: 300px;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: #fff;
+	overflow: auto;
+	box-shadow: 0 0 4px rgba(0, 0, 0, .3);
+	z-index: 100;
+	.tools{
+		height: 40px;
+		overflow: hidden;
+		.home{
+			display: block;
+			padding: 10px 15px;
+			width: 24px;
+			height: 24px;
+			svg{
+				width: 24px;
+				height: 24px;
+				fill: #9fadc7;
+				transition: .2s;
+			}
+			&:hover svg{
+				fill: #5f6879
+			}
+		}
+	}
+}
+.opus-detail{
+	padding: 10px 20px;
+	.cover{
+		width: 120px;
+		height: 120px;
+		margin: auto;
+		border-radius: 4px;
+		background-color: #eee;
+		background-size: contain;
+		background-position: center;
+		img{
+			display: none;
+		}
+	}
+	h1{
+		padding: 15px 0;
+		line-height: 22px;
+		font-size: 20px;
+		color: #333;
+	}
+	p{
+		line-height: 18px;
+		text-indent: 2em;
+		font-size: 14px;
+		color: #888;
+	}
+}
+.user-card{
+	position: absolute;
+	left: 0;
+	bottom: 15px;
+	width: 100%;
+	a{
+		position: relative;
+		display: block;
+		height: 70px;
+		margin: 0 15px;
+		background: #f6f6f6;
+	}
+	.avatar{
+		position: absolute;
+		width: 70px;
+		height: 70px;
+		top:0;
+		left:0;
+		background: #eee;
+		img{
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.content{
+		padding: 0 10px 0 80px;
+		.nickname{
+			height: 26px;
+			padding-top: 4px;
+			line-height: 24px;
+			font-size: 16px;
+			color: #333;
+		}
+		.bio{
+			height: 32px;
+			line-height: 16px;
+			font-size: 12px;
+			color: #aaa;
+			overflow: hidden;
+		}
+	}
+}
+
+
+.main-pager{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	iframe{
+		width: 100%;
+		height: 100%;
+	}
+}
