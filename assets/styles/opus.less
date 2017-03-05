@@ -12,19 +12,24 @@ body{
 }
 .side-bar{
 	position: absolute;
-	width: 300px;
-	width: 300px;
+	width: 0;
 	height: 100%;
 	top: 0;
 	left: 0;
-	background: #fff;
-	overflow: auto;
-	box-shadow: 0 0 4px rgba(0, 0, 0, .3);
 	z-index: 100;
+	.sidebar-body{
+		position: relative;
+		width: 300px;
+		height: 100%;
+		background: #fff;
+		overflow: auto;
+		box-shadow: 0 0 4px rgba(0, 0, 0, .3);
+		transition: 0.3s ease-out;
+	}
 	.tools{
 		height: 40px;
 		overflow: hidden;
-		.home{
+		a{
 			display: block;
 			padding: 10px 15px;
 			width: 24px;
@@ -38,6 +43,40 @@ body{
 			&:hover svg{
 				fill: #5f6879
 			}
+		}
+		.home {
+			float: left;
+		}
+		.slide-in {
+			float: right;
+		}
+	}
+	.slide-in{
+		position: absolute;
+		display: block;
+		top: 50%;
+		left: 0;
+		width: 24px;
+		height: 48px;
+		border-radius: 0 24px 24px 0;
+		background: #fff;
+
+		line-height:46px;
+		svg{
+			width: 16px;
+			height: 16px;
+			vertical-align: middle;
+			fill: #9fadc7;
+			transition: .2s;
+		}
+		&:hover svg{
+			fill: #5f6879
+		}
+	}
+	&.hide {
+		.sidebar-body{
+			transform: translate(-310px, 0);
+			opacity: 0.5;
 		}
 	}
 }
